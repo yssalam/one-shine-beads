@@ -1,16 +1,31 @@
 //Toggle active
 const navbarNav = document.querySelector(".navbar-nav");
+const searchForm = document.querySelector(".search-form");
+
+//Seacrh langsung bisa ketik
+const searchBox = document.querySelector(".search-box");
 
 //ketika hamburger menu di klik
 document.querySelector("#hamburger-menu").onclick = () => {
   navbarNav.classList.toggle("active");
 };
 
-//klik di luar sidebar untuk menghilangkan humberger menu
-const hamburgerOut = document.querySelector('#hamburger-menu');
+//ketika seacrh di klik
+document.querySelector("#search").onclick = (e) => {
+  e.preventDefault();
+  searchForm.classList.toggle("active");
+  searchBox.focus();
+};
 
-document.addEventListener('click', function (e) {
-    if(!hamburgerOut.contains(e.target) && !navbarNav.contains(e.target)){
-        navbarNav.classList.remove('active');
-    }
-}) 
+//klik di luar element
+const hamburgerOut = document.querySelector("#hamburger-menu");
+const seacrhOut = document.querySelector("#search");
+
+document.addEventListener("click", function (e) {
+  if (!hamburgerOut.contains(e.target) && !navbarNav.contains(e.target)) {
+    navbarNav.classList.remove("active");
+  }
+  if (!seacrhOut.contains(e.target) && !searchForm.contains(e.target)) {
+    searchForm.classList.remove("active");
+  }
+});

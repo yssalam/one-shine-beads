@@ -16,6 +16,10 @@
     text-decoration: none;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, var(--white-soft) 0%, var(--purple-soft) 100%);
@@ -30,6 +34,7 @@ body {
     padding: 1.2rem 5%;
     background: linear-gradient(135deg, var(--white-soft) 0%, var(--purple-soft) 100%);
     border-bottom: 1px solid var(--rose-accent);
+    border-radius: 0 0 20px 20px;
     position: fixed;
     top: 0;
     left: 0;
@@ -76,6 +81,42 @@ body {
 
 #hamburger-menu {
     display: none;
+}
+
+/* Search Form */
+.navbar .search-form {
+    position: absolute;
+    top: 100%;
+    right: 2%;
+    background-color: #fff;
+    width: 35rem;
+    height: 4.5rem;
+    display: flex;
+    align-items: center;
+    border-radius: 0 0 20px 20px;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: 0.3s ease-in-out;
+}
+
+.navbar .search-form.active {
+    transform: scaleY(1);
+}
+
+.navbar .search-form input {
+    height: 100%;
+    width: 100%;
+    font-size: 1.5rem;
+    color: #333;
+    padding: 1rem;
+    border-radius: 0 0 20px 20px;
+}
+
+.navbar .search-form label {
+    cursor: pointer;
+    font-size: 1.8rem;
+    margin-right: 1.4rem;
+    color: #555;
 }
 
 /* Hero Section */
@@ -255,6 +296,7 @@ footer {
     text-align: center;
     padding: 1rem 3rem 3rem;
     margin-top: 3rem;
+    border-radius: 20px 20px 0 0;
 }
 
 footer .socials {
@@ -334,6 +376,11 @@ footer .credit a {
 
     .navbar .navbar-nav a:hover::after {
         transform: scaleX(.2)
+    }
+
+    .navbar .search-form {
+        width: 90%;
+        right: 2rem;
     }
 
     .about .row {
