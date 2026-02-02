@@ -6,7 +6,8 @@ const searchForm = document.querySelector(".search-form");
 const searchBox = document.querySelector(".search-box");
 
 //ketika hamburger menu di klik
-document.querySelector("#hamburger-menu").onclick = () => {
+document.querySelector("#hamburger-menu").onclick = (e) => {
+  e.preventDefault();
   navbarNav.classList.toggle("active");
 };
 
