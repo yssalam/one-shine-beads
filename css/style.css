@@ -85,7 +85,7 @@ body {
     align-items: center;
     justify-content: center;
     background-image: linear-gradient(rgba(0, 0, 0, 0.25),
-            rgba(0, 0, 0, 0.25)), url(/img/header-bg.jpg);
+            rgba(0, 0, 0, 0.25)), url(../img/header-bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -306,7 +306,7 @@ footer .credit a {
         position: absolute;
         top: 100%;
         right: -100%;
-        background-color: rgba(244, 182, 216, 0.9);
+        background: linear-gradient(135deg, var(--white-soft) 0%, var(--purple-soft) 100%);
         width: 25rem;
         height: 100vh;
         transition: 0.3s ease-in-out;
@@ -357,6 +357,10 @@ footer .credit a {
 
     .about .row .content p {
         font-size: 1.5rem;
+    }
+
+    .contact .row {
+        flex-wrap: wrap;
     }
 }
 
