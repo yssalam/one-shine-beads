@@ -20,7 +20,6 @@ body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, var(--white-soft) 0%, var(--purple-soft) 100%);
     color: #555;
-    /* min-height: 5000px; */
 }
 
 /* Navbar */
@@ -85,8 +84,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.2),
-            rgba(0, 0, 0, 0.2)), url(/img/header-bg.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.25),
+            rgba(0, 0, 0, 0.25)), url(/img/header-bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
