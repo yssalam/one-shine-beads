@@ -3,7 +3,7 @@ const navbarNav = document.querySelector(".navbar-nav");
 const searchForm = document.querySelector(".search-form");
 
 //Seacrh langsung bisa ketik
-const searchBox = document.querySelector(".search-box");
+const searchBox = document.querySelector("#search-box");
 
 //ketika hamburger menu di klik
 document.querySelector("#hamburger-menu").onclick = (e) => {
