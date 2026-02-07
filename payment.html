@@ -93,36 +93,83 @@
             </a>
         </div>
         <!-- Shopping Cart End -->
+
     </nav>
     <!-- Navbar End -->
 
     <!-- Payment Start -->
-    <div class="payment" x-data="payment()" x-init="init()">
-        <h2>Ringkasan <span>Pesanan</span></h2>
+    <section class="payment" x-data="payment()" x-init="init()">
+    <h2>Ringkasan <span>Pesanan</span></h2>
 
+    <div class="payment-container">
+        <!-- Daftar Item -->
         <template x-for="item in cart.items" :key="item.id">
-            <p><!-- Contoh: sebelum form -->
-                <!-- <div class="payment-image">
-                <img src="path/to/your/image.jpg" alt="Payment">
-            </div> -->
-                <span x-text="item.name"></span>
-                (x<span x-text="item.quantity"></span>) –
-                <strong x-text="rupiah(item.total)"></strong>
-            </p>
+            <div class="payment-table">
+                <img :src="`img/produk/phone-straps/${item.img}`" :alt="item.name">
+
+                <div class="payment-info">
+                    <span class="category" x-text="item.category"></span>
+                    <span class="name" x-text="item.name"></span>
+
+                    <div class="meta">
+                        <span class="label">Harga</span>
+                        <span class="price" x-text="rupiah(item.price)"></span>
+                    </div>
+
+                    <div class="meta">
+                        <span class="label">Jumlah</span>
+                        <span class="quantity" x-text="item.quantity"></span>
+                    </div>
+
+                    <div class="meta total">
+                        <span class="label">Total</span>
+                        <span x-text="rupiah(item.total)"></span>
+                    </div>
+                </div>
+            </div>
         </template>
 
-        <h3>Total: <span x-text="rupiah(cart.total)"></span></h3>
+        <!-- Total -->
+        <h3>
+            Total:
+            <span x-text="rupiah(cart.total)"></span>
+        </h3>
 
-        <!-- FORM HARUS DI SINI -->
+        <!-- Form Payment -->
         <form class="form-payment" @submit.prevent="sendWA">
-            <input type="text" x-model="name" placeholder="Nama" required>
-            <input type="text" x-model="address" placeholder="Alamat" required>
+            <div class="input-group">
+                <input 
+                    type="text" 
+                    x-model="name" 
+                    placeholder="Nama" 
+                    required
+                >
+            </div>
+            
+            <div class="input-group">
+                <input 
+                    type="tel" 
+                    pattern="[0-9]*" 
+                    inputmode="numeric" 
+                    x-model="numPhone" 
+                    placeholder="Nomor HP"
+                    required
+                >
+            </div>
+            
+            <div class="input-group">
+                <input 
+                    type="text" 
+                    x-model="address" 
+                    placeholder="Alamat" 
+                    required
+                >
+            </div>
+
             <button type="submit">Kirim Pesanan</button>
         </form>
     </div>
-
-
-
+</section>
     <!-- Payment End -->
 
     <!-- Footer Start -->

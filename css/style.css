@@ -505,114 +505,109 @@ body {
 }
 
 /* Payment */
-
-/* Item List Styling */
-.payment p {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid var(--gray-soft);
-    font-size: 0.95rem;
-    color: #333;
-}
-
-.payment p span {
-    color: #555;
-}
-
-.payment p strong {
-    color: var(--rose-accent);
-    font-weight: 600;
-}
-
-/* Total Styling */
 .payment h3 {
-    margin: 1.5rem 0;
-    padding: 1rem;
-    background: linear-gradient(135deg, var(--pink-main), var(--purple-soft));
-    border-radius: 10px;
-    color: white;
     text-align: center;
-    font-size: 1.3rem;
-    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+    margin-top: 2rem;
 }
 
-.payment h3 span {
-    font-weight: 700;
-    letter-spacing: 0.5px;
+/* ==================== Payment Container ==================== */
+.payment-container {
+    position: relative;
+    margin-top: 2rem;
 }
 
-/* Image Area - Tambahkan di HTML sesuai kebutuhan */
-.payment-image {
-    width: 100%;
-    max-width: 300px;
-    margin: 1.5rem auto;
+/* ==================== Payment Table ==================== */
+.payment-table {
+    width: 500px;
+    max-width: 90%;
+    max-height: fit-content;
+    margin: 1rem auto;
+    padding: 12px 10px;
+    background: #fff;
     border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 1px 25px rgba(0, 0, 0, 0.2);
 }
 
-.payment-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
+.payment-table img {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    float: left;
+    border-radius: 30%;
+    background: linear-gradient(
+        120deg, 
+        #e5e5e5 30%, 
+        #f0f0f0 38%, 
+        #f0f0f0 40%, 
+        #e5e5e5 48%
+    );
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    animation: load89234 2s infinite;
 }
 
-/* Form Payment Styling */
-.form-payment {
+/* ==================== Payment Info ==================== */
+.payment-info {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    margin-top: 1.5rem;
+    flex-wrap: wrap;
+    padding: 10px;
 }
 
-.form-payment input[type="text"] {
+.payment-info .meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+}
+
+.payment-info .label {
+    color: #777;
+}
+
+.payment-info .total {
+    font-weight: 600;
+}
+
+/* ==================== Form Payment ==================== */
+.payment .form-payment {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 30rem;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.payment .form-payment .input-group {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+    padding-left: 2rem;
+    background-color: var(--gray-soft);
+    border: 1px solid var(--white-soft);
+    border-radius: 20px;
+}
+
+.payment .form-payment .input-group input {
     width: 100%;
     padding: 1rem;
-    border: 2px solid var(--gray-soft);
-    border-radius: 10px;
     font-size: 1rem;
-    background-color: white;
-    transition: all 0.3s ease;
-    outline: none;
+    background: none;
 }
 
-.form-payment input[type="text"]:focus {
-    border-color: var(--pink-main);
-    box-shadow: 0 0 0 3px rgba(244, 182, 216, 0.2);
-}
-
-.form-payment input[type="text"]::placeholder {
-    color: #aaa;
-    font-style: italic;
-}
-
-.form-payment button[type="submit"] {
-    width: 100%;
-    padding: 1.2rem;
-    background: linear-gradient(135deg, var(--rose-accent), var(--pink-main));
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 1.1rem;
-    font-weight: 600;
+.payment .form-payment button {
+    width: 15rem;
+    display: block;
+    margin: 1rem auto 0;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    text-align: center;
+    color: var(--white-soft);
+    background-color: var(--rose-accent);
+    border-radius: 20px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 0.5rem;
-    box-shadow: 0 4px 10px rgba(235, 113, 166, 0.3);
-}
-
-.form-payment button[type="submit"]:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(235, 113, 166, 0.4);
-    background: linear-gradient(135deg, var(--pink-main), var(--rose-accent));
-}
-
-.form-payment button[type="submit"]:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 5px rgba(235, 113, 166, 0.3);
 }
 
 
@@ -752,11 +747,6 @@ footer .credit a {
         font-size: 1.1rem;
     }
 
-    .form-payment input[type="text"],
-    .form-payment button[type="submit"] {
-        padding: 0.9rem;
-        font-size: 0.95rem;
-    }
 }
 
 /* Mobile */

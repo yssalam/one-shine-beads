@@ -127,6 +127,7 @@ document.addEventListener("alpine:init", () => {
 
     name: "",
     address: "",
+    numPhone: "",
 
     init() {
       const savedCart = localStorage.getItem("cart");
@@ -148,11 +149,14 @@ document.addEventListener("alpine:init", () => {
       });
 
       pesan += `%0ATotal: ${rupiah(this.cart.total)}%0A`;
-      pesan += `%0ANama: ${this.name}%0AAlamat: ${this.address}`;
+      pesan += `%0ANama: ${this.name}%0ANomor HP: ${this.numPhone}%0AAlamat: ${this.address}`;
 
       window.open(`https://wa.me/6289512458177?text=${pesan}`, "_blank");
-
+      
       localStorage.removeItem("cart");
+
+      window.location.href = "index.html";
+
     },
 
     removeItem(id) {
