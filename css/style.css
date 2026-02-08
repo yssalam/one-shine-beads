@@ -218,7 +218,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
     margin-top: 3rem;
-    padding: .6rem 1.5rem;
+    padding: .6rem 3rem;
     font-size: .8rem;
     color: var(--white-soft);
     background-color: var(--rose-accent);
@@ -300,7 +300,7 @@ body {
 .product-section,
 .contact,
 .payment {
-    padding: 8rem 7% 1.4rem;
+    padding: 8rem 5% 1.4rem;
 
 }
 
@@ -316,7 +316,8 @@ body {
 .about h2 span,
 .product-section h2 span,
 .contact h2 span,
-.payment h2 span {
+.payment h2 span,
+.payment h3 span {
     color: var(--rose-accent);
 }
 
@@ -359,7 +360,7 @@ body {
     display: grid;
     grid-column: auto;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 30px;
+    gap: 10px;
 }
 
 .product-section .product-card {
@@ -421,24 +422,34 @@ body {
 
 /* Info */
 .product-info {
-    padding: 20px;
+    padding: .8rem 0.5rem;
     text-align: center;
 }
 
 .category {
+    font-size: .8rem;
+    display: flex;
+    justify-content: left;
+    margin-left: 1rem;
     font-style: italic;
     color: #c97a5a;
-    margin-bottom: 6px;
+    margin-bottom: 1px;
 }
 
 .name {
+    display: flex;
+    justify-content: left;
+    margin-left: 1rem;
     font-size: 22px;
     margin-bottom: 8px;
 }
 
 .price {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 1rem;
     font-size: 16px;
-    color: #444;
+    color: var(--rose-accent);
 }
 
 
@@ -483,7 +494,7 @@ body {
     background-color: var(--gray-soft);
     border: 1px solid var(--white-soft);
     padding-left: 2rem;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .contact .row form .input-group input {
@@ -505,58 +516,95 @@ body {
 }
 
 /* Payment */
-.payment h3 {
-    text-align: center;
-    font-size: 1.5rem;
-    margin-bottom: 3rem;
-    margin-top: 2rem;
-}
-
-/* ==================== Payment Container ==================== */
 .payment-container {
-    position: relative;
-    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
 }
 
-/* ==================== Payment Table ==================== */
-.payment-table {
-    width: 500px;
-    max-width: 90%;
-    max-height: fit-content;
+/* Content */
+.payment-left,
+.payment-right {
+    display: flex;
+    flex-direction: column;
+    gap: .1rem;
+    flex: 1;
+}
+
+.payment-container h3 {
+    display: flex;
+    font-size: 2rem;
+
+    width: 100%;
+    max-width: 600px;
     margin: 1rem auto;
-    padding: 12px 10px;
-    background: #fff;
+}
+
+.payment-left h3 span,
+.payment-right h3 span {
+    margin-left: 0.3rem;
+}
+
+/*  Payment Item */
+.payment-table {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    width: 100%;
+    max-width: 600px;
+    margin: 1rem auto;
+
+    padding: 1rem;
+    background: var(--white-soft);
     border-radius: 10px;
     box-shadow: 0 1px 25px rgba(0, 0, 0, 0.2);
 }
 
 .payment-table img {
-    width: 100px;
-    height: 100px;
-    position: relative;
-    float: left;
+    display: flex;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    flex-shrink: 0;
+
     border-radius: 30%;
-    background: linear-gradient(
-        120deg, 
-        #e5e5e5 30%, 
-        #f0f0f0 38%, 
-        #f0f0f0 40%, 
-        #e5e5e5 48%
-    );
+    object-fit: cover;
+
+    /* skeleton loader */
+    background: linear-gradient(120deg,
+            #e5e5e5 30%,
+            #f0f0f0 38%,
+            #f0f0f0 40%,
+            #e5e5e5 48%);
     background-size: 200% 100%;
-    background-position: 100% 0;
     animation: load89234 2s infinite;
 }
 
-/* ==================== Payment Info ==================== */
+/* Payment Info */
 .payment-info {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    padding: 10px;
+    gap: 0.4rem;
+    flex: 1;
 }
 
-.payment-info .meta {
+.category-item {
+    font-size: .8rem;
+    font-style: italic;
+    color: #c97a5a;
+    margin-bottom: 1px;
+}
+
+.name-item {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1px;
+}
+
+.payment-info .meta,
+.payment-info .meta-total {
     display: flex;
     justify-content: space-between;
     font-size: 0.9rem;
@@ -570,24 +618,60 @@ body {
     font-weight: 600;
 }
 
-/* ==================== Form Payment ==================== */
-.payment .form-payment {
+.payment .meta-info {
+
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    width: 30rem;
-    max-width: 90%;
+    justify-content: space-between;
+    gap: 1rem;
+
+    width: 100%;
+    max-width: 600px;
+    margin: 1rem auto;
+
+    padding: 1rem;
+    background: var(--white-soft);
+    border-radius: 10px;
+    box-shadow: 0 1px 25px rgba(0, 0, 0, 0.2);
+}
+
+.payment .meta-info-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.payment .meta-info-detail .label-note{
+    color: var(--rose-accent);
     margin: 0 auto;
 }
 
+
+/* Form Payment */
+.payment .form-payment {
+
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    gap: .6rem;
+    width: 100%;
+    max-width: 600px;
+    margin: 1rem auto;
+}
+
 .payment .form-payment .input-group {
+
     display: flex;
     align-items: center;
-    margin-top: 2rem;
+    margin-top: 1rem;
     padding-left: 2rem;
-    background-color: var(--gray-soft);
-    border: 1px solid var(--white-soft);
-    border-radius: 20px;
+    background-color: var(--white-soft);
+    border: 1px solid var(--gray-soft);
+    border-radius: 5px;
+    box-shadow: 0 1px 20px rgba(0, 0, 0, 0.2);
 }
 
 .payment .form-payment .input-group input {
@@ -596,6 +680,20 @@ body {
     font-size: 1rem;
     background: none;
 }
+
+.payment .form-payment .input-group textarea {
+    width: 100%;
+    padding: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    background: none;
+    border: none;
+    resize: none;
+    outline: none;
+    overflow: hidden;
+    word-break: break-word;
+}
+
 
 .payment .form-payment button {
     width: 15rem;
@@ -606,8 +704,9 @@ body {
     text-align: center;
     color: var(--white-soft);
     background-color: var(--rose-accent);
-    border-radius: 20px;
+    border-radius: 8px;
     cursor: pointer;
+    box-shadow: 0 1px 25px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -663,6 +762,21 @@ footer .credit a {
 
     #hamburger-menu {
         display: inline-block;
+    }
+
+    #shopping-cart .quantity-badge {
+        font-size: 1rem;
+        right: -10%;
+    }
+
+    .shopping-cart .btn-submit {
+        padding: .8rem 5rem;
+        font-size: 1rem;
+
+    }
+
+    .no-product-cart {
+        padding: 5rem 5%;
     }
 
     .navbar .navbar-nav {
@@ -731,8 +845,16 @@ footer .credit a {
         flex-wrap: wrap;
     }
 
+    .product-section {
+        padding: 1rem 2% 1rem;
+    }
+
     .product-container {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .product-container .product-card .product-info {
+        padding: 1rem 3% 1.3rem;
     }
 
     .product-container .product-card .product-info h3 {
@@ -743,9 +865,35 @@ footer .credit a {
         font-size: 1.2rem;
     }
 
-    .payment h3 {
-        font-size: 1.1rem;
+    .payment-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
+
+    .payment-container h3 {
+        justify-content: center;
+    }
+
+    .payment-table {
+        width: 43rem;
+    }
+
+    .payment-table img {
+        height: 9rem;
+        width: 9rem;
+    }
+
+    .form-payment .input-group {
+        width: 43rem;
+        font-size: 1rem;
+    }
+
+    .form-payment .input-group i {
+        width: 5px;
+        height: 5px;
+    }
+
 
 }
 

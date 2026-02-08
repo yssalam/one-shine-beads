@@ -81,14 +81,16 @@
                 </div>
             </template>
 
-            <h4 class="empty-cart-title" x-show="!$store.cart.items.length">Belum ada barang</h4>
-            <p class="empty-cart" x-show="!$store.cart.items.length">Ayo belanja!!</p>
+            <div class="no-product-cart">
+                <h4 class="empty-cart-title" x-show="!$store.cart.items.length">Belum ada barang</h4>
+                <p class="empty-cart" x-show="!$store.cart.items.length">Ayo belanja!!</p>
+
+            </div>
             <h4 class="show-total" x-show="$store.cart.items.length">Total :
                 <span x-text="rupiah($store.cart.total)">
                 </span>
             </h4>
-            <a href="#" class="btn-submit" x-show="$store.cart.items.length" 
-            @click="localStorage.setItem('cart', JSON.stringify($store.cart));
+            <a href="#" class="btn-submit" x-show="$store.cart.items.length" @click="localStorage.setItem('cart', JSON.stringify($store.cart));
             window.location.href = 'payment.html';">
                 Checkout
             </a>
@@ -159,7 +161,10 @@
                     <div class="product-info">
                         <p class="category" x-text="item.category"></p>
                         <h3 class="name" x-text="item.name"></h3>
-                        <span class="price" x-text="rupiah(item.price)"></span>
+                        <div class="price">
+                            <span class="label">Harga</span>
+                            <span x-text="rupiah(item.price)"></span>
+                        </div>
                     </div>
                 </div>
             </template>

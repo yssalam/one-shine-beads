@@ -126,8 +126,9 @@ document.addEventListener("alpine:init", () => {
     },
 
     name: "",
-    address: "",
     numPhone: "",
+    email: "",
+    address: "",
 
     init() {
       const savedCart = localStorage.getItem("cart");
@@ -142,21 +143,20 @@ document.addEventListener("alpine:init", () => {
         return;
       }
 
-      let pesan = `Halo, saya mau pesan:%0A%0A`;
+      let pesan = `Halo min, saya mau pesan :%0A%0A`;
 
       this.cart.items.forEach((item) => {
-        pesan += `- ${item.name} x${item.quantity} = ${rupiah(item.total)}%0A`;
+        pesan += `- ${item.name} (${item.quantity} buah) = ${rupiah(item.total)}%0A`;
       });
 
-      pesan += `%0ATotal: ${rupiah(this.cart.total)}%0A`;
-      pesan += `%0ANama: ${this.name}%0ANomor HP: ${this.numPhone}%0AAlamat: ${this.address}`;
+      pesan += `%0ATotal : ${rupiah(this.cart.total)}%0A`;
+      pesan += `%0ANama : ${this.name}%0ANomor HP : ${this.numPhone}%0AEmail : ${this.email}%0AAlamat : ${this.address}`;
 
       window.open(`https://wa.me/6289512458177?text=${pesan}`, "_blank");
-      
+
       localStorage.removeItem("cart");
 
       window.location.href = "index.html";
-
     },
 
     removeItem(id) {
