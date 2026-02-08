@@ -3,6 +3,7 @@ const navbarNav = document.querySelector(".navbar-nav");
 const searchForm = document.querySelector(".search-form");
 const cartForm = document.querySelector(".shopping-cart");
 
+
 //Seacrh langsung bisa ketik
 const searchBox = document.querySelector("#search-box");
 

@@ -1,42 +1,181 @@
 document.addEventListener("alpine:init", () => {
   Alpine.data("products", () => ({
+    category: "all",
+    selectedProduct: null,
+    showModal: false,
+    searchQuery: "",
+    activeSearch: "",
+
     items: [
       {
         id: 1,
         name: "Phone Strap 1",
         category: "Phone Strap",
+        folder: "phone-straps",
         img: "phone-strap-1.jpg",
         price: 15000,
+        desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus rem ducimus distinctio incidunt beatae corporis ad, laboriosam suscipit tenetur illo?",
       },
       {
         id: 2,
         name: "Phone Strap 2",
         category: "Phone Strap",
+        folder: "phone-straps",
         img: "phone-strap-2.jpg",
         price: 12500,
+        desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus rem ducimus distinctio incidunt beatae corporis ad, laboriosam suscipit tenetur illo?",
       },
       {
         id: 3,
         name: "Phone Strap 3",
         category: "Phone Strap",
+        folder: "phone-straps",
         img: "phone-strap-3.jpg",
         price: 13000,
+        desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus rem ducimus distinctio incidunt beatae corporis ad, laboriosam suscipit tenetur illo?",
       },
       {
         id: 4,
         name: "Phone Strap 4",
         category: "Phone Strap",
+        folder: "phone-straps",
         img: "phone-strap-4.jpg",
         price: 14000,
+        desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus rem ducimus distinctio incidunt beatae corporis ad, laboriosam suscipit tenetur illo?",
       },
       {
         id: 5,
         name: "Phone Strap 5",
         category: "Phone Strap",
+        folder: "phone-straps",
         img: "phone-strap-5.jpg",
         price: 10000,
+        desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus rem ducimus distinctio incidunt beatae corporis ad, laboriosam suscipit tenetur illo?",
+      },
+      {
+        id: 6,
+        name: "Ring 1",
+        category: "Ring",
+        folder: "rings",
+        img: "1.jpg",
+        price: 10000,
+        desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus rem ducimus distinctio incidunt beatae corporis ad, laboriosam suscipit tenetur illo?",
+      },
+      {
+        id: 7,
+        name: "Ring 2",
+        category: "Ring",
+        folder: "rings",
+        img: "2.jpg",
+        price: 10000,
+        desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus rem ducimus distinctio incidunt beatae corporis ad, laboriosam suscipit tenetur illo?",
+      },
+      {
+        id: 8,
+        name: "Necklace 1",
+        category: "Neclace",
+        folder: "necklaces",
+        img: "1.jpg",
+        price: 10000,
+        desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus rem ducimus distinctio incidunt beatae corporis ad, laboriosam suscipit tenetur illo?",
+      },
+      {
+        id: 9,
+        name: "Necklace 2",
+        category: "Neclace",
+        folder: "necklaces",
+        img: "2.jpeg",
+        price: 10000,
+        desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus rem ducimus distinctio incidunt beatae corporis ad, laboriosam suscipit tenetur illo?",
+      },
+      {
+        id: 10,
+        name: "Necklace 3",
+        category: "Neclace",
+        folder: "necklaces",
+        img: "3.jpeg",
+        price: 10000,
+        desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus rem ducimus distinctio incidunt beatae corporis ad, laboriosam suscipit tenetur illo?",
+      },
+      {
+        id: 11,
+        name: "Bracelet 1",
+        category: "Bracelet",
+        folder: "bracelets",
+        img: "1.jpg",
+        price: 10000,
+        desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus rem ducimus distinctio incidunt beatae corporis ad, laboriosam suscipit tenetur illo?",
+      },
+      {
+        id: 12,
+        name: "Bracelet 2",
+        category: "Bracelet",
+        folder: "bracelets",
+        img: "2.jpg",
+        price: 10000,
+        desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus rem ducimus distinctio incidunt beatae corporis ad, laboriosam suscipit tenetur illo?",
+      },
+      {
+        id: 13,
+        name: "Bracelet 3",
+        category: "Bracelet",
+        folder: "bracelets",
+        img: "3.jpg",
+        price: 10000,
+        desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus rem ducimus distinctio incidunt beatae corporis ad, laboriosam suscipit tenetur illo?",
+      },
+      {
+        id: 14,
+        name: "Bracelet 4",
+        category: "Bracelet",
+        folder: "bracelets",
+        img: "4.jpeg",
+        price: 10000,
+        desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus rem ducimus distinctio incidunt beatae corporis ad, laboriosam suscipit tenetur illo?",
+      },
+      {
+        id: 15,
+        name: "Bracelet 5",
+        category: "Bracelet",
+        folder: "bracelets",
+        img: "5.jpg",
+        price: 10000,
+        desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus rem ducimus distinctio incidunt beatae corporis ad, laboriosam suscipit tenetur illo?",
       },
     ],
+
+    openModal(product) {
+      this.selectedProduct = product;
+      this.showModal = true;
+    },
+
+    closeModal() {
+      this.showModal = false;
+      this.selectedProduct = null;
+    },
+
+    applySearch() {
+      this.activeSearch = this.searchQuery.trim().toLowerCase();
+    },
+
+    get filteredProducts() {
+      let result = this.items;
+
+      //filter kategori
+      if (this.category !== "all") {
+        result = result.filter((item) => item.category === this.category);
+      }
+
+      //search 
+      if (this.activeSearch) {
+        result = result.filter((item) =>
+          item.name.toLowerCase().includes(this.activeSearch),
+        );
+      }
+
+      console.log(result);
+      return result;
+    },
   }));
 
   Alpine.store("cart", {
@@ -168,6 +307,32 @@ document.addEventListener("alpine:init", () => {
       this.cart.items = this.cart.items.filter((i) => i.id !== id);
 
       localStorage.setItem("cart", JSON.stringify(this.cart));
+    },
+  }));
+});
+
+document.addEventListener("alpine:init", () => {
+  Alpine.data("navScroll", () => ({
+    active: "home",
+
+    init() {
+      const sections = document.querySelectorAll("section[id]");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              this.active = entry.target.id;
+            }
+          });
+        },
+        {
+          threshold: 0.15,
+          rootMargin: "-80px 0px -40% 0px",
+        },
+      );
+
+      sections.forEach((section) => observer.observe(section));
     },
   }));
 });

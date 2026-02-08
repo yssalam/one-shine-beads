@@ -36,13 +36,11 @@
 
 
         <div class="navbar-nav">
-            <a href="#home" :class="{ 'active': active === 'home' }">Home</a>
-            <a href="#about" :class="{ 'active': active === 'about' }">Tentang Kami</a>
+            <a href="index.html" :class="{ 'active': active === 'home' }">Home</a>
+            <a href="index.html#about" :class="{ 'active': active === 'about' }">Tentang Kami</a>
             <a href="#product" :class="{ 'active': active === 'product' }">Produk</a>
-            <a href="#contact" :class="{ 'active': active === 'contact' }">Kontak</a>
+            <a href="index.html#contact" :class="{ 'active': active === 'contact' }">Kontak</a>
         </div>
-
-
 
 
         <div class="navbar-extra">
@@ -55,9 +53,16 @@
         </div>
 
         <!-- Searc Form Start -->
-        <div class="search-form">
-            <input type="search" id="search-box" placeholder="Cari ...">
-            <label for="search-box"><i data-feather="search"></i></label>
+        <div class="search-form" x-data="products()">
+            <input 
+            type="search" 
+            id="search-box" 
+            placeholder="Cari ..." 
+            x-model ="searchQuery"
+            @keydown.enter.prevent="applySearch">
+            <label for="search-box" @click="applySearch">
+                <i data-feather="search"></i>
+            </label>
         </div>
         <!-- Searc Form End -->
 
@@ -103,42 +108,9 @@
     </nav>
     <!-- Navbar End -->
 
-    <!-- Hero Section Start -->
-    <section id="home" class="hero">
-        <main class="content">
-            <h1>Crafted <span>Beads</span>, Made to <span>Shine</span></h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, non?</p>
-            <a href="#" class="btn-hero">Beli Sekarang</a>
-        </main>
-    </section>
-    <!-- Hero Section End -->
-
-    <!-- About Section Start -->
-    <section id="about" class="about">
-        <h2>Tentang <span>Kami</span></h2>
-        <div class="row">
-            <div class="about-img">
-                <img src="img/about.png" alt="Tentang Kami">
-            </div>
-            <div class="content">
-                <h3>Kenapa memilih produk kami?</h3>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus beatae amet fugit sit expedita
-                    soluta sequi a vel maiores quo.
-                </p>
-                <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint veniam ex ducimus cupiditate enim
-                    est.
-                </p>
-                <a href="#" class="btn-about">Selengkapnya</a>
-            </div>
-        </div>
-    </section>
-    <!-- About Section End -->
-
-    <!-- Product Section Start -->
+    <!-- Product Start -->
     <section id="product" class="product-section" x-data="products()">
-        <h2>Produk <span>Kami</span></h2>
+        <h2>Semua <span>Produk</span></h2>
 
         <div class="list-cp">
             <h4>Filter</h4>
@@ -153,7 +125,7 @@
         </div>
 
         <div class="product-container">
-            <template x-for="item in filteredProducts.slice(0, 8)" :key="item.id">
+            <template x-for="item in filteredProducts" :key="item.id">
 
                 <div class="product-card">
                     <div class="product-image">
@@ -217,42 +189,8 @@
             </div>
 
         </div>
-        <button class="btn-product" onclick="location.href='product.html'">
-            Semua Produk
-        </button>
     </section>
-
-    <!-- Product Section End -->
-
-    <!-- Contact Section Start -->
-    <section id="contact" class="contact">
-        <h2>Kontak <span>Kami</span></h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, cumque.</p>
-
-        <div class="row">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1665.1352819080862!2d107.76035668401526!3d-6.964248716396269!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c3875bf5f8b3%3A0x72c4f0a5cf6f824c!2sWarung%20Omah!5e0!3m2!1sid!2sid!4v1770028546310!5m2!1sid!2sid"
-                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map">
-            </iframe>
-
-            <form action="">
-                <div class="input-group">
-                    <i data-feather="user"></i>
-                    <input type="text" placeholder="Nama">
-                </div>
-                <div class="input-group">
-                    <i data-feather="mail"></i>
-                    <input type="text" placeholder="Email">
-                </div>
-                <div class="input-group">
-                    <i data-feather="phone"></i>
-                    <input type="text" placeholder="Nomor HP">
-                </div>
-                <button type="submit" class="btn">Kirim Pesan</button>
-            </form>
-        </div>
-    </section>
-    <!-- Contact Section End -->
+    <!-- Product End -->
 
     <!-- Footer Start -->
     <footer>
