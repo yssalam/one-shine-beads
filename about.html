@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>One Shine Beads</title>
+
+    <!-- Icons -->
+    <link rel="icon" href="assets/favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- My style -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Feather icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <!-- Alphine Js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Navbar Start -->
+    <nav class="navbar" x-data="navScroll()">
+        <a href="#" class="navbar-logo">
+            <img src="img/Logo Asli.png" alt="logo">
+        </a>
+
+
+        <div class="navbar-nav">
+            <a href="index.html" :class="{ 'active': active === 'home' }">Home</a>
+            <a href="#about" :class="{ 'active': active === 'about' }">Tentang Kami</a>
+            <a href="index.html#product" :class="{ 'active': active === 'product' }">Produk</a>
+            <a href="index.html#contact" :class="{ 'active': active === 'contact' }">Kontak</a>
+        </div>
+
+
+        <div class="navbar-extra">
+            <a href="#" id="search"><i data-feather="search"></i></a>
+            <a href="#" id="shopping-cart">
+                <i data-feather="shopping-cart"></i>
+                <span class="quantity-badge" x-show="$store.cart.quantity" x-text="$store.cart.quantity"></span>
+            </a>
+            <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+        </div>
+
+        <!-- Searc Form Start -->
+        <div class="search-form" x-data="products()">
+            <input type="search" id="search-box" placeholder="Cari ..." x-model="searchQuery"
+                @keydown.enter.prevent="applySearch">
+            <label for="search-box" @click="applySearch">
+                <i data-feather="search"></i>
+            </label>
+        </div>
+        <!-- Searc Form End -->
+
+        <!-- Shopping Cart Start -->
+        <div class="shopping-cart">
+            <template x-for="(item, index) in $store.cart.items" x-keys="index">
+                <div class="cart-item">
+                    <img :src="`img/produk/phone-straps/${item.img}`" :alt="item.name">
+                    <div class="item-detail">
+                        <h3 x-text="item.name"></h3>
+                        <div class="item-price">
+                            <span x-text="rupiah(item.price)"></span> &times;
+                            <button id="remove" @click="$store.cart.remove(item.id)">&minus;</button>
+                            <span x-text="item.quantity"></span>
+                            <button id="add" @click="$store.cart.add(item)">&plus;</button> &equals;
+                            <span x-text="rupiah(item.total)"></span>
+                        </div>
+                    </div>
+
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" class="remove-item"
+                        @click="$store.cart.removeAll(item.id)">
+                        <use href="img/produk/feather-sprite.svg#trash-2" />
+                    </svg>
+                </div>
+            </template>
+
+            <div class="no-product-cart">
+                <h4 class="empty-cart-title" x-show="!$store.cart.items.length">Belum ada barang</h4>
+                <p class="empty-cart" x-show="!$store.cart.items.length">Ayo belanja!!</p>
+
+            </div>
+            <h4 class="show-total" x-show="$store.cart.items.length">Total :
+                <span x-text="rupiah($store.cart.total)">
+                </span>
+            </h4>
+            <a href="#" class="btn-submit" x-show="$store.cart.items.length" @click="localStorage.setItem('cart', JSON.stringify($store.cart));
+            window.location.href = 'payment.html';">
+                Checkout
+            </a>
+        </div>
+        <!-- Shopping Cart End -->
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- About Start -->
+    <section id="about" class="about">
+        <h2>Tentang <span>Kami</span></h2>
+        <div class="container">
+            <div class="about-content">
+
+                <!-- Text Content -->
+                <div class="about-text">
+                    <h1 class="section-title">
+                        Welcome to <span class="highlight">One Shine Beads</span>
+                    </h1>
+
+                    <p class="about-description">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est omnis laudantium soluta tempore
+                        laborum vero fugit placeat eum repudiandae, dolore provident, culpa totam facilis nihil.
+                    </p>
+                    <p class="about-description">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex modi rerum excepturi, itaque dolore
+                        quaerat soluta velit nemo officia, natus, maiores nulla animi! Consequatur dicta doloremque
+                        exercitationem obcaecati odio eaque maxime nam laborum quod neque amet saepe, velit accusamus
+                        nisi vel at. Dolore quis et neque corporis id cum blanditiis.
+                    </p>
+
+                </div>
+
+                <!-- Images Grid -->
+                <div class="about-images">
+                    <div class="images-grid">
+                        <div class="image-wrapper img-1">
+                            <img src="img/produk/bracelets/1.jpg" alt="About Image">
+                        </div>
+                        <div class="image-wrapper img-2">
+                            <img src="img/produk/necklaces/1.jpg" alt="About Image">
+                        </div>
+                        <div class="image-wrapper img-3">
+                            <img src="img/produk/phone-straps/phone-strap-1.jpg" alt="About Image">
+                        </div>
+                        <div class="image-wrapper img-4">
+                            <img src="img/produk/rings/1.jpg" alt="About Image">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- About End -->
+
+    <!-- Footer Start -->
+    <footer>
+        <div class="socials">
+            <a href="#">
+                <i data-feather="instagram">
+                </i>
+            </a>
+            <a href="#">
+                <i data-feather="instagram">
+                </i>
+            </a>
+        </div>
+
+        <div class="links">
+            <a href="#">Home</a>
+            <a href="#about">Tentang Kami</a>
+            <a href="#product">Produk</a>
+            <a href="#contact">Kontak Kami</a>
+        </div>
+
+        <div class="credit">
+            <p>Created by <a href="">yssalam</a>. | &copy; 2026.</p>
+        </div>
+    </footer>
+    <!-- Footer End -->
+
+    <!-- Feather icons -->
+    <script>
+        feather.replace();
+    </script>
+
+    <!-- My Javascript -->
+    <script src="js/script.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
