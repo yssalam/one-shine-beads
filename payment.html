@@ -108,7 +108,7 @@
                 <!-- Daftar Item -->
                 <template x-for="item in cart.items" :key="item.id">
                     <div class="payment-table">
-                        <img :src="`img/produk/phone-straps/${item.img}`" :alt="item.name">
+                        <img :src="`img/produk/${item.folder}/${item.img}`" :alt="item.name">
 
                         <div class="payment-info">
                             <span class="category-item" x-text="item.category"></span>

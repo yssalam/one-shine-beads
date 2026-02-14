@@ -181,7 +181,7 @@ body {
 }
 
 .shopping-cart .item-price {
-    font-size: 0.8rem;
+    font-size: .8rem;
 }
 
 .shopping-cart .cart-wrapper {
@@ -209,7 +209,7 @@ body {
     color: var(--white-soft);
     border-radius: 50%;
     font-weight: bold;
-    font-size: .8rem;
+    font-size: rem;
 }
 
 .shopping-cart .show-total {
@@ -233,7 +233,7 @@ body {
 .shopping-cart .cart-footer {
     position: sticky;
     bottom: 0;
-    background: var(--gray-soft);
+    background: var(--white-soft);
     padding: 1rem;
     border-top: 1px solid #ddd;
 }
@@ -245,7 +245,7 @@ body {
 
 .shopping-cart .label-note {
     font-size: .8rem;
-    font-weight: 300;
+    font-weight: 600;
     color: var(--rose-accent);
     display: flex;
     justify-content: center;
@@ -1098,6 +1098,7 @@ body {
     padding: 1rem;
     font-size: 1rem;
     background: none;
+    font-family: 'Poppins', sans-serif;
 }
 
 .payment .form-payment .input-group textarea {
@@ -1163,6 +1164,24 @@ footer .credit {
 footer .credit a {
     color: #111;
 }
+
+.toast {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background: #111;
+    color: #fff;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    z-index: 9999;
+}
+
+[x-cloak] {
+  display: none !important;
+}
+
+
+
 
 /* Media Queries */
 /* Laptop & Tablet Landscape */
@@ -1327,6 +1346,7 @@ footer .credit a {
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin: 0 2rem;
     }
 
     .payment-container h3 {
@@ -1334,7 +1354,7 @@ footer .credit a {
     }
 
     .payment-table {
-        width: 43rem;
+        width: 40rem;
     }
 
     .payment-table img {
@@ -1343,7 +1363,7 @@ footer .credit a {
     }
 
     .form-payment .input-group {
-        width: 43rem;
+        width: 40rem;
         font-size: 1rem;
     }
 
@@ -1360,5 +1380,67 @@ footer .credit a {
     html {
         font-size: 60%
     }
+
+    .shopping-cart .cart-item h3 {
+        font-size: 1.3rem;
+    }
+
+    .shopping-cart .cart-item .item-price {
+        font-size: 1rem;
+    }
+
+    .shopping-cart .cart-item #add,
+    .shopping-cart .cart-item #remove {
+        padding: 2px 4px;
+        font-size: 1rem;
+    }
+
+    .shopping-cart .remove-item {
+        right: 1rem;
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+
+    .shopping-cart .cart-wrapper {
+        padding: 1rem;
+    }
+
+    .shopping-cart .cart-footer {
+        padding: 0.8rem;
+    }
+
+    .shopping-cart .footer-text h4 {
+        font-size: 1.3rem;
+    }
+
+    .shopping-cart .label-note {
+        font-size: .8rem;
+        margin-top: 1rem;
+    }
+
+    .shopping-cart .btn-submit {
+        padding: .6rem 4rem;
+        font-size: 1rem;
+    }
+
+    .payment-container .payment-table {
+        width: 40rem;
+        max-width: 92%;
+    }
+
+    .payment-container .meta-info {
+        width: 40rem;
+        max-width: 92%;
+    }
+
+    .payment-container .form-payment {
+        width: 40rem;
+        max-width: 92%;
+    }
+
+    .payment-container .form-payment .input-group {
+        width: 100%;
+    }
+
 
 }

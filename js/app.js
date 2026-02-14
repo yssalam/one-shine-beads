@@ -166,14 +166,13 @@ document.addEventListener("alpine:init", () => {
         result = result.filter((item) => item.category === this.category);
       }
 
-      //search 
+      //search
       if (this.activeSearch) {
         result = result.filter((item) =>
           item.name.toLowerCase().includes(this.activeSearch),
         );
       }
 
-      console.log(result);
       return result;
     },
   }));
@@ -183,30 +182,25 @@ document.addEventListener("alpine:init", () => {
     total: 0,
     quantity: 0,
     add(newItem) {
-      //cek apakah ada barang yang sama di cart
       const cartItem = this.items.find((item) => item.id === newItem.id);
 
-      //jika belum ada
       if (!cartItem) {
         this.items.push({ ...newItem, quantity: 1, total: newItem.price });
         this.quantity++;
         this.total += newItem.price;
       } else {
-        //jika barang ada atau beda
         this.items = this.items.map((item) => {
-          //jika barang beda
-          if (item.id !== newItem.id) {
-            return item;
-          } else {
-            //jika barang sudah ada
-            item.quantity++;
-            item.total = item.price * item.quantity;
-            this.quantity++;
-            this.total += item.price;
-            return item;
-          }
+          if (item.id !== newItem.id) return item;
+
+          item.quantity++;
+          item.total = item.price * item.quantity;
+          this.quantity++;
+          this.total += item.price;
+          return item;
         });
       }
+
+    
     },
 
     sync() {
@@ -244,7 +238,26 @@ document.addEventListener("alpine:init", () => {
       this.sync();
     },
   });
+
+  Alpine.store("toast", {
+    show: false,
+    message: "",
+    timeout: null,
+
+    trigger(msg) {
+      this.message = msg;
+      this.show = true;
+
+      clearTimeout(this.timeout);
+      this.timeout = setTimeout(() => {
+        this.show = false;
+      }, 1000);
+    },
+  });
 });
+
+
+
 
 //konversi ke rupiah
 const rupiah = (number) => {
